@@ -1,6 +1,5 @@
-# React and Express Template
-Comes with Node.JS, Express, and React ready out of the box.
-Supported with Nunjucks and Bulma for HTML templating and CSS respectively.
+# Polynomial Operations
+This unit attempts to explain addition, subtraction, and multiplication of polynomials.
 
 ## Setup and Installation
 Clone the project, move inside this directory in your shell, and run the following to get started locally.
