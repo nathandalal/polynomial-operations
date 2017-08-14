@@ -46,24 +46,6 @@ export default class Home extends React.Component {
       stateChange[`${variable}text`] = target.value
       this.setState(stateChange)
     }
-
-    // console.log(target.value)
-    // let stateChange = {}
-    
-    // if(!target.value || target.value.length == 0) {
-    //   stateChange[variable] = 0
-    //   stateChange[`${variable}text`] = ""
-    //   this.setState(stateChange)
-    // } 
-    // else if(/[0-9]+/.test(target.value)) {
-    //   let val = parseInt(target.value, 10)
-    //   stateChange.error = (val > this.RANGE || val < -this.RANGE) ? variable : ""
-    //   val = (val > this.RANGE || val < -this.RANGE) ? 0 : val
-
-    //   stateChange[variable] = val
-    //   stateChange[`${variable}text`] = target.value
-    //   this.setState(stateChange)
-    // }
   }
 
   handleDecimalPoints(event) { if(event.key == ".") event.preventDefault() }
