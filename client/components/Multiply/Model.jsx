@@ -27,19 +27,19 @@ export default class Model extends React.Component {
     return (
       <div>
         <div style={{margin: "5px auto", padding: 0, verticalAlign: "middle"}}>
-          <div style={{width: unitWidth * 3 * m2, display: "inline-block"}}>{m2}x</div>
-          <div style={{display: "inline-block"}}>+</div>
-          <div style={{width: unitWidth * b2, display: "inline-block"}}>{b2}</div>
+          {m2 ? <div style={{width: unitWidth * 3 * Math.abs(m2), display: "inline-block"}}>{m2}x</div> : ""}
+          {b2 && m2 ? <div style={{display: "inline-block"}}>+</div> : ""}
+          {b2 ? <div style={{width: unitWidth * Math.abs(b2), display: "inline-block"}}>{b2}</div> : ""}
         </div>
-        <div style={{margin: "0 auto", padding: 0, verticalAlign: "middle", position: "relative", width: (unitWidth * (3 * m2 + b2))}}>
-          <div style={{position: "absolute", margin: "0 auto", left: -25, top: (unitWidth * 3 * m1 / 2) - 10}}>{m1}x</div>
+        <div style={{margin: "0 auto", padding: 0, verticalAlign: "middle", position: "relative", width: (unitWidth * (3 * Math.abs(m2) + Math.abs(b2)))}}>
+          {m1 ? <div style={{position: "absolute", margin: "0 auto", left: -25, top: (unitWidth * 3 * Math.abs(m1) / 2) - 10}}>{m1}x</div> : ""}
           <ModelBoxes nRows={m1} nCols={m2} color={m1m2Color} degree={2} boxWidth={unitWidth * 3} boxHeight={unitWidth * 3} />
           <ModelBoxes nRows={m1} nCols={b2} color={m1b2Color} degree={1} boxWidth={unitWidth} boxHeight={unitWidth * 3} />
         </div>
-        <div style={{margin: "0 auto", padding: 0, verticalAlign: "middle", position: "relative", width: (unitWidth * (3 * m2 + b2))}}>
+        <div style={{margin: "0 auto", padding: 0, verticalAlign: "middle", position: "relative", width: (unitWidth * (3 * Math.abs(m2) + Math.abs(b2)))}}>
           <div style={{position: "relative"}}>
-            <div style={{position: "absolute", margin: "0 auto", left: -25, top: -10}}>+</div>
-            <div style={{position: "absolute", margin: "0 auto", left: -25, top: (unitWidth * b1 / 2) - 10}}>{b1}</div>
+            {b1 && m1 ? <div style={{position: "absolute", margin: "0 auto", left: -25, top: -10}}>+</div> : ""}
+            {b1 ? <div style={{position: "absolute", margin: "0 auto", left: -25, top: (unitWidth * Math.abs(b1) / 2) - 10}}>{b1}</div> : ""}
             <ModelBoxes nRows={b1} nCols={m2} color={m2b1Color} degree={1} boxWidth={unitWidth * 3} boxHeight={unitWidth} />
             <ModelBoxes nRows={b1} nCols={b2} color={b1b2Color} degree={0} boxWidth={unitWidth} boxHeight={unitWidth} />
           </div>

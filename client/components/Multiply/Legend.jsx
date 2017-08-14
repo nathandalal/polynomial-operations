@@ -11,7 +11,7 @@ const Block = ({width, height, color}) => (
 )
 
 const Legend = () => (
-  <div className="box columns is-multiline is-gapless">
+  <div className="box columns is-multiline is-mobile is-gapless" style={{padding: 15}}>
     <div className="column is-one-thirds-desktop has-text-centered">
       <div><b>Terms</b></div>
       <div style={{margin:5}}>X<sup>2</sup></div>
