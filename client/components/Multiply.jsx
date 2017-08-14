@@ -51,7 +51,7 @@ export default class Home extends React.Component {
   handleDecimalPoints(event) { if(event.key == ".") event.preventDefault() }
 
   render() {
-    let { m1, b1, m2, b2, m1text, b1text, m2text, b2text, error } = this.state
+    let { m1text, b1text, m2text, b2text, error } = this.state
 
     let numberInputCommonProps = {
       onChangeFn: this.changeInput.bind(this, 'm1'),

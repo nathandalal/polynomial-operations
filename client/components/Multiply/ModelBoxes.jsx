@@ -8,11 +8,6 @@ const ModelBoxes = ({boxWidth, boxHeight, nRows, nCols, color, degree}) => {
   nRows = Math.abs(nRows)
   nCols = Math.abs(nCols)
 
-  let fontMargin = () => {
-    if(degree == 2 || (degree == 1 && boxHeight > boxWidth)) return 10
-    return 5
-  }
-
   return (
     <div style={{height: boxHeight * nRows, display: "inline-block", verticalAlign: "middle"}}>
       {(nRows !== 0 && nCols !== 0) ? Array(nRows).fill(0).map((v1, i) => (
