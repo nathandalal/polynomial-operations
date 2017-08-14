@@ -16,6 +16,7 @@ const AnswerEquation = ({m1, m2, b1, b2}) => {
       else return <span>{a}x<sup>2</sup> {c >= 0 ? "+" : "-"} {Math.abs(c)}</span>
     }
 
+    if (!c) return <span>{a}x<sup>2</sup> {b >= 0 ? "+" : "-"} {Math.abs(b)}x</span>
     return <span>{a}x<sup>2</sup> {b >= 0 ? "+" : "-"} {Math.abs(b)}x {c >= 0 ? "+" : "-"} {Math.abs(c)}</span>
   }
 
