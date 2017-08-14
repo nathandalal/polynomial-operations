@@ -5,18 +5,13 @@ import colors from '../../utils/colors'
 export default class Model extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { screenWidth: window.innerWidth }
+    this.state = getInitialState()
   }
 
-  updateDimensions() {
-    this.setState({screenWidth: window.innerWidth })
-  }
-  componentDidMount() {
-    window.addEventListener("resize", this.updateDimensions.bind(this))
-  }
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateDimensions.bind(this))
-  }
+  getInitialState() { return { screenWidth: window.innerWidth } }
+  updateDimensions() { this.setState(getInitialState()) }
+  componentDidMount() { window.addEventListener("resize", this.updateDimensions.bind(this)) }
+  componentWillUnmount() { window.removeEventListener("resize", this.updateDimensions.bind(this)) }
 
   render() {
     let { m1, b1, m2, b2 } = this.props
