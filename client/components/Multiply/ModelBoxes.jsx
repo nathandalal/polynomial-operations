@@ -15,8 +15,8 @@ const ModelBoxes = ({boxWidth, boxHeight, nRows, nCols, color, degree}) => {
       {(nRows !== 0 && nCols !== 0) ? Array(nRows).fill(0).map((v1, i) => (
         <div key={i} style={{width: boxWidth * nCols, height: boxHeight, verticalAlign: "middle"}}>
         {Array(nCols).fill(0).map((v2, j) => (
-          <div key={j} style={{backgroundColor: color, border: "3px solid", width: boxWidth, height: boxHeight, float: "left"}}>
-            {innerText}
+          <div key={j} style={{backgroundColor: color, border: "3px solid", width: boxWidth, height: boxHeight, float: "left", verticalAlign: "middle"}}>
+            <span style={{fontSize: `${(boxHeight * boxWidth / 300) + 8}px`}}>{innerText}</span>
           </div>
         ))}
         </div>

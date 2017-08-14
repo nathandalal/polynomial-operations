@@ -28,14 +28,16 @@ export default class Home extends React.Component {
   }
 
   changeInput(variable, {target}) {
+    console.log(target.value)
     let stateChange = {}
     
-    if(!target.value) {
+    if(!target.value || target.value.length == 0) {
+      console.log('here')
       stateChange[variable] = 0
       stateChange[`${variable}text`] = ""
       this.setState(stateChange)
     } 
-    else if(/[\d-]/.test(target.value)) {
+    else if(/[0-9]+/.test(target.value)) {
       let val = parseInt(target.value, 10)
       stateChange.error = (val > this.RANGE || val < -this.RANGE)
       val = (val > this.RANGE || val < -this.RANGE) ? 0 : val
@@ -44,6 +46,10 @@ export default class Home extends React.Component {
       stateChange[`${variable}text`] = target.value
       this.setState(stateChange)
     }
+  }
+
+  yell(event) {
+    console.log(event)
   }
 
   render() {
@@ -57,12 +63,12 @@ export default class Home extends React.Component {
             <InputEquation {...this.state} />
           </div>
           <div className="column is-3-desktop is-6-tablet">
-            <input className="input" type="number" placeholder="1st Coefficient" value={m1text} onChange={this.changeInput.bind(this, 'm1')}/>
-            <input className="input" type="number" placeholder="1st Constant" value={b1text} onChange={this.changeInput.bind(this, 'b1')}/>
-            <input className="input" type="number" placeholder="2nd Coefficient" value={m2text} onChange={this.changeInput.bind(this, 'm2')}/>
-            <input className="input" type="number" placeholder="2nd Constant" value={b2text} onChange={this.changeInput.bind(this, 'b2')}/>
+            <input className="input" type="number" placeholder="1st Coefficient" value={m1text} onKeyPress={this.yell.bind(this)} onChange={this.changeInput.bind(this, 'm1')}/>
+            <input className="input" type="number" placeholder="1st Constant" value={b1text} onKeyPress={this.yell.bind(this)} onChange={this.changeInput.bind(this, 'b1')}/>
+            <input className="input" type="number" placeholder="2nd Coefficient" value={m2text} onKeyPress={this.yell.bind(this)} onChange={this.changeInput.bind(this, 'm2')}/>
+            <input className="input" type="number" placeholder="2nd Constant" value={b2text} onKeyPress={this.yell.bind(this)} onChange={this.changeInput.bind(this, 'b2')}/>
             <p className={`help is-${error ? "danger" : "info"}`}>
-              {error ? `Inputs must range from -${this.RANGE} to ${this.RANGE} inclusive.` : "Please change the inputs, negative values work as well!"}
+              {error ? `Inputs must be integers from -${this.RANGE} to ${this.RANGE} inclusive.` : "Please change the inputs, negative values work as well!"}
             </p>
           </div>
           <div className="column is-3-desktop is-6-tablet">
