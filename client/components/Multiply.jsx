@@ -10,6 +10,7 @@ export default class Home extends React.Component {
     super(props)
     this.state = this.getInitialState()
     this.RANGE = 10
+    this.handleDecimalPoints = this.handleDecimalPoints.bind(this)
   }
 
   getInitialState() {
@@ -32,7 +33,6 @@ export default class Home extends React.Component {
     let stateChange = {}
     
     if(!target.value || target.value.length == 0) {
-      console.log('here')
       stateChange[variable] = 0
       stateChange[`${variable}text`] = ""
       this.setState(stateChange)
@@ -48,9 +48,7 @@ export default class Home extends React.Component {
     }
   }
 
-  yell(event) {
-    console.log(event)
-  }
+  handleDecimalPoints(event) { if(event.key == ".") event.preventDefault() }
 
   render() {
     console.log(this.state)
@@ -63,10 +61,10 @@ export default class Home extends React.Component {
             <InputEquation {...this.state} />
           </div>
           <div className="column is-3-desktop is-6-tablet">
-            <input className="input" type="number" placeholder="1st Coefficient" value={m1text} onKeyPress={this.yell.bind(this)} onChange={this.changeInput.bind(this, 'm1')}/>
-            <input className="input" type="number" placeholder="1st Constant" value={b1text} onKeyPress={this.yell.bind(this)} onChange={this.changeInput.bind(this, 'b1')}/>
-            <input className="input" type="number" placeholder="2nd Coefficient" value={m2text} onKeyPress={this.yell.bind(this)} onChange={this.changeInput.bind(this, 'm2')}/>
-            <input className="input" type="number" placeholder="2nd Constant" value={b2text} onKeyPress={this.yell.bind(this)} onChange={this.changeInput.bind(this, 'b2')}/>
+            <input className="input" type="number" pattern="[0-9]*" min={this.RANGE} max={-this.RANGE} placeholder="1st Coefficient" value={m1text} onKeyPress={this.handleDecimalPoints} onChange={this.changeInput.bind(this, 'm1')}/>
+            <input className="input" type="number" pattern="[0-9]*" min={this.RANGE} max={-this.RANGE} placeholder="1st Constant" value={b1text} onKeyPress={this.handleDecimalPoints} onChange={this.changeInput.bind(this, 'b1')}/>
+            <input className="input" type="number" pattern="[0-9]*" min={this.RANGE} max={-this.RANGE} placeholder="2nd Coefficient" value={m2text} onKeyPress={this.handleDecimalPoints} onChange={this.changeInput.bind(this, 'm2')}/>
+            <input className="input" type="number" pattern="[0-9]*" min={this.RANGE} max={-this.RANGE} placeholder="2nd Constant" value={b2text} onKeyPress={this.handleDecimalPoints} onChange={this.changeInput.bind(this, 'b2')}/>
             <p className={`help is-${error ? "danger" : "info"}`}>
               {error ? `Inputs must be integers from -${this.RANGE} to ${this.RANGE} inclusive.` : "Please change the inputs, negative values work as well!"}
             </p>
