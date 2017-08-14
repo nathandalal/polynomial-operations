@@ -53,11 +53,6 @@ export default class Home extends React.Component {
   render() {
     let { m1text, b1text, m2text, b2text, error } = this.state
 
-    let numberInputCommonProps = {
-      onChangeFn: this.changeInput.bind(this, 'm1'),
-      range: this.RANGE
-    }
-
     return (
       <div className="content container has-text-centered">
         <div className="columns is-multiline">
@@ -65,10 +60,10 @@ export default class Home extends React.Component {
             <InputEquation {...this.state} />
           </div>
           <div className="column is-3-desktop is-6-tablet">
-            <NumberInput error={error == "m1"}  placeholder="1st Coefficient" value={m1text} {...numberInputCommonProps} />
-            <NumberInput error={error == "b1"}  placeholder="1st Constant"    value={b1text} {...numberInputCommonProps} />
-            <NumberInput error={error == "m2"}  placeholder="2nd Coefficient" value={m2text} {...numberInputCommonProps} />
-            <NumberInput error={error == "b2"}  placeholder="2nd Constant"    value={b2text} {...numberInputCommonProps} />
+            <NumberInput error={error == "m1"}  placeholder="1st Coefficient" value={m1text} onChangeFn={this.changeInput.bind(this, 'm1')} range={this.RANGE} />
+            <NumberInput error={error == "b1"}  placeholder="1st Constant"    value={b1text} onChangeFn={this.changeInput.bind(this, 'b1')} range={this.RANGE} />
+            <NumberInput error={error == "m2"}  placeholder="2nd Coefficient" value={m2text} onChangeFn={this.changeInput.bind(this, 'm2')} range={this.RANGE} />
+            <NumberInput error={error == "b2"}  placeholder="2nd Constant"    value={b2text} onChangeFn={this.changeInput.bind(this, 'b2')} range={this.RANGE} />
             <p className={`help is-${error ? "danger" : "info"}`}>
               {error 
                 ? `Inputs must be integers from -${this.RANGE} to ${this.RANGE} inclusive.`
