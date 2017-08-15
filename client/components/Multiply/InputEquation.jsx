@@ -8,9 +8,6 @@ const InputEquation = ({m1, m2, b1, b2}) => {
     let firstTerm = m1 ? `${m1}${b1 ? ` ${b1 >= 0 ? "+" : "-"} ${Math.abs(b1)}` : ""}` : b1
     let secondTerm = m2 ? `${m2}${b2 ? ` ${b2 >= 0 ? "+" : "-"} ${Math.abs(b2)}` : ""}` : b2
 
-    if(!m1 && !b1) return 0
-    if(!m2 && !b2) return 0
-
     return `(${firstTerm})(${secondTerm})`
   }
 

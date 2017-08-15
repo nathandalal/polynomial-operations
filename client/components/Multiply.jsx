@@ -18,7 +18,7 @@ export default class Home extends React.Component {
     let variables = {
       m1: 1,
       b1: 2,
-      m2: 3,
+      m2: -3,
       b2: 4,
     }
 
@@ -66,8 +66,8 @@ export default class Home extends React.Component {
             <NumberInput error={error == "b2"}  placeholder="2nd Constant"    value={b2text} onChangeFn={this.changeInput.bind(this, 'b2')} range={this.RANGE} />
             <p className={`help is-${error ? "danger" : "info"}`}>
               {error 
-                ? `Inputs must be integers from -${this.RANGE} to ${this.RANGE} inclusive.`
-                : "Please change the inputs, negative values work as well!"}
+                ? `Inputs must be integers between -${this.RANGE} and ${this.RANGE}.`
+                : "Change the inputs to integers between -10 and 10."}
             </p>
           </div>
           <div className="column is-3-desktop is-6-tablet">
