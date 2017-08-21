@@ -1,5 +1,5 @@
 import React from 'react'
-import ModelBoxes from './ModelBoxes.jsx'
+import ModelBoxes from '../General/ModelBoxes.jsx'
 import colors from '../../utils/colors'
 
 export default class Model extends React.Component {
@@ -14,6 +14,8 @@ export default class Model extends React.Component {
   componentWillUnmount() { window.removeEventListener("resize", this.updateDimensions.bind(this)) }
 
   render() {
+    if (this.props.error) return this.renderError()
+
     let { m1, b1, m2, b2 } = this.props
     let { screenWidth } = this.state
 
@@ -42,6 +44,14 @@ export default class Model extends React.Component {
           <ModelBoxes nRows={b1} nCols={m2} color={m2b1Color} degree={1} boxWidth={unitWidth * 3} boxHeight={unitWidth} />
           <ModelBoxes nRows={b1} nCols={b2} color={b1b2Color} degree={0} boxWidth={unitWidth} boxHeight={unitWidth} />
         </div>
+      </div>
+    )
+  }
+
+  renderError() {
+    return (
+      <div className="content">
+        <h1>There's an error with your inputs.</h1>
       </div>
     )
   }

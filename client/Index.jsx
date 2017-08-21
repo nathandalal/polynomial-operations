@@ -2,6 +2,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 
+import Add from './components/Add.jsx'
 import Multiply from './components/Multiply.jsx'
 import About from './components/About.jsx'
 
@@ -14,6 +15,7 @@ class Index extends React.Component {
 
   render() {
     let routes = [
+      { path: "/add",         name: "Adding Polynomials",         icon: "plus",                 component: Add },
       { path: "/multiply",    name: "Mutiplying Polynomials",     icon: "times",                component: Multiply },
       { path: "/about",       name: "About This Page",            icon: "question-circle-o",    component: About }
     ]
