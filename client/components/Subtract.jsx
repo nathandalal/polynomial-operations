@@ -2,6 +2,6 @@ import React from 'react'
 
 import AddSubtract from './AddSubtract/AddSubtract.jsx'
 
-const Add = () => <AddSubtract />
+const Subtract = () => <AddSubtract subtractionMode={true} />
 
-export default Add
+export default Subtract
