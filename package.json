@@ -1,11 +1,11 @@
 {
-  "name": "react-express-template",
+  "name": "polynomial-operations",
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nathandalal/react-express-template.git"
+    "url": "https://github.com/nathandalal/polynomial-operations.git"
   },
-  "description": "A simple template with Node, Express, and React that exposes a self-documenting API.",
+  "description": "Adding and subtracting and multiplying polynomials using blocks.",
   "main": "app.js",
   "dependencies": {
     "axios": "^0.16.2",
