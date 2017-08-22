@@ -16,10 +16,10 @@ class Index extends React.Component {
 
   render() {
     let routes = [
-      { path: "/add",         name: "Adding Polynomials",         icon: "plus",                 component: Add },
-      { path: "/subtract",    name: "Subtracting Polynomials",    icon: "minus",                component: Subtract },
-      { path: "/multiply",    name: "Mutiplying Polynomials",     icon: "times",                component: Multiply },
-      { path: "/about",       name: "About This Page",            icon: "question-circle-o",    component: About }
+      { path: "/add",         name: "Adding",           icon: "plus",                 component: Add },
+      { path: "/subtract",    name: "Subtracting",      icon: "minus",                component: Subtract },
+      { path: "/multiply",    name: "Mutiplying",       icon: "times",                component: Multiply },
+      { path: "/about",       name: "About This Page",  icon: "question-circle-o",    component: About }
     ]
 
     return (

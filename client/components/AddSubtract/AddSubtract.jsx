@@ -38,6 +38,7 @@ export default class AddSubtract extends React.Component {
       stateChange[`${variable}text`] = target.value
       stateChange[`${variable}error`] = false
       this.setState(stateChange)
+      this.runAnimation()
     }
     else if(/[0-9]+/.test(target.value)) {
       let val = parseInt(target.value, 10)
@@ -47,21 +48,44 @@ export default class AddSubtract extends React.Component {
       stateChange[variable] = val
       stateChange[`${variable}text`] = target.value
       this.setState(stateChange)
+      this.runAnimation()
+    }
+  }
+
+  componentDidMount() {
+    this.timeouts = []
+    this.runAnimation()
+  }
+
+  componentWillUnmount() {
+    this.clearTimeouts()
+  }
+
+  clearTimeouts() {
+    this.timeouts.forEach(clearTimeout)
+  }
+
+  runAnimation(delayms = 3000) {
+    this.clearTimeouts()
+
+    this.setState({subtractionTransition: false})
+
+    if(this.props.subtractionMode) {
+      this.timeouts.push(setTimeout((() => {
+        this.setState({subtractionTransition: true})
+      }).bind(this), delayms))
     }
   }
 
   render() {
+    console.log(this.state.subtractionTransition)
+
     let { a1, b1, c1, a2, b2, c2,
           a1text, b1text, c1text, a2text, b2text, c2text,
-          a1error, b1error, c1error, a2error, b2error, c2error } = this.state
+          a1error, b1error, c1error, a2error, b2error, c2error,
+          subtractionTransition } = this.state
 
     let { subtractionMode } = this.props
-
-    if(subtractionMode) {
-      a2 = -a2
-      b2 = -b2
-      c2 = -c2
-    }
 
     let error1 = (a1error || b1error || c1error)
     let error2 = (a2error || b2error || c2error)
@@ -82,7 +106,11 @@ export default class AddSubtract extends React.Component {
             </p>
           </div>
           <div className="column is-3-desktop is-6-tablet">
-            <Equation title={"Second Input"} a={a2} b={b2} c={c2} subtracted={subtractionMode} />
+            <Equation title={"Second Input"} 
+              a={a2}
+              b={b2}
+              c={c2}
+              subtracted={subtractionMode} />
             <NumberInput error={a2error}  placeholder="2nd X&sup2; Term"  value={a2text} onChangeFn={this.changeInput.bind(this, 'a2')} range={this.RANGE} />
             <NumberInput error={b2error}  placeholder="2nd X Term"        value={b2text} onChangeFn={this.changeInput.bind(this, 'b2')} range={this.RANGE} />
             <NumberInput error={c2error}  placeholder="2nd Constant"      value={c2text} onChangeFn={this.changeInput.bind(this, 'c2')} range={this.RANGE} />
@@ -98,13 +126,16 @@ export default class AddSubtract extends React.Component {
           </div>
           <div className="column is-3-desktop is-6-tablet">
             <Equation title={"The Answer"} 
-              a={a1 + a2}
-              b={b1 + b2}
-              c={c1 + c2} />
+              a={subtractionMode ? (a1 - a2) : (a1 + a2)}
+              b={subtractionMode ? (b1 - b2) : (b1 + b2)}
+              c={subtractionMode ? (c1 - c2) : (c1 + c2)} />
           </div>
         </div>
         <hr/>
-        <Model error={error} subtractionMode={subtractionMode} a1={a1} b1={b1} c1={c1} a2={a2} b2={b2} c2={c2} />
+        <Model error={error} 
+          subtractionMode={subtractionMode}
+          subtractionTransition={subtractionTransition}
+          a1={a1} b1={b1} c1={c1} a2={a2} b2={b2} c2={c2} />
       </div>
     )
   }
