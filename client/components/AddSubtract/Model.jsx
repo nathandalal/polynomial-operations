@@ -17,7 +17,7 @@ export default class Model extends React.Component {
     if (this.props.error) return this.renderError()
 
     let { a1, b1, c1, a2, b2, c2, subtractionMode, subtractionTransition } = this.props
-    let animationStyle = { animationDuration: "2s" }
+    let animationStyle = { animationDuration: "4s" }
 
     let a1Color = a1 >= 0 ? colors.degree2 : colors.degree2Negative
     let b1Color = b1 >= 0 ? colors.degree1 : colors.degree1Negative

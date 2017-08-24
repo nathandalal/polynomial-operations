@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Equation = ({title, a, b, c, subtracted}) => {
+const Equation = ({title, a, b, c, subtractionMode, subtractionTransition}) => {
   let formatCoefficient = (coeff) => Math.abs(coeff) == 1 ? (coeff < 0 ? "-" : "") : coeff
 
   let formatPolynomial = (a, b, c) => {
@@ -12,9 +12,10 @@ const Equation = ({title, a, b, c, subtracted}) => {
 
   return (
     <div className="content">
-      <h2 className={subtracted ? "has-text-danger" : ""}>{title}</h2>
-      {subtracted ? <h6>-({formatPolynomial(a, b, c)})</h6> : ""}
-      {subtracted ? <h6>{formatPolynomial(-a, -b, -c)}</h6> : <h6>{formatPolynomial(a, b, c)}</h6>}
+      <h2 className={subtractionMode ? "has-text-danger" : ""}>{title}</h2>
+      {subtractionMode ? <h6>-({formatPolynomial(a, b, c)})</h6> : ""}
+      {subtractionTransition ? <h6 className="animated jackInTheBox">{formatPolynomial(-a, -b, -c)}</h6> : ""}
+      {!subtractionMode && !subtractionTransition ? <h6>{formatPolynomial(a, b, c)}</h6> : ""}
     </div>
   )
 }
