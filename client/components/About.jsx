@@ -150,8 +150,10 @@ def formatPolynomial(a, b, c):<br/>
     <hr/>
     <div className="content">
       <h3>Food For Thought</h3>
-      <h6>How about if one of the coefficients is missing?</h6>
-      <h6>How would you extend this solution to work for a polynomial of any size?</h6>
+      <ul>
+        <li>How about if one of the coefficients is missing?</li>
+        <li>How would you extend this solution to work for a polynomial of any size?</li>
+      </ul>
     </div>
 
     <ul className="footer has-text-centered" style={{listStyleType: "none", padding: 20}}>

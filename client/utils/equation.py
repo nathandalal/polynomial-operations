@@ -20,8 +20,8 @@ def formatPolynomial(a, b, c):
 
   print("%sx^2 %s %sx %s %s" % (a_number, b_sign, b_number, c_sign, c_number))
 
-formatPolynomial(3, 2, 1)
-formatPolynomial(5, 1, 3)
-formatPolynomial(-1, 8, 7)
-formatPolynomial(1, -1, -5)
-formatPolynomial(-7, 2, -4)
+# formatPolynomial(3, 2, 1)
+# formatPolynomial(5, 1, 3)
+# formatPolynomial(-1, 8, 7)
+# formatPolynomial(1, -1, -5)
+# formatPolynomial(-7, 2, -4)

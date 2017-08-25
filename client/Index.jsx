@@ -19,7 +19,7 @@ class Index extends React.Component {
       { path: "/add",         name: "Adding",           icon: "plus",                 component: Add },
       { path: "/subtract",    name: "Subtracting",      icon: "minus",                component: Subtract },
       { path: "/multiply",    name: "Mutiplying",       icon: "times",                component: Multiply },
-      { path: "/about",       name: "How It's Made",  icon: "question-circle-o",    component: About }
+      { path: "/about",       name: "How It's Made",    icon: "question-circle-o",    component: About }
     ]
 
     return (
